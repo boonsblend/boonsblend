@@ -1,3 +1,21 @@
-body { font-family: Arial, sans-serif; padding: 20px; }
-header, footer { background: #f4f4f4; padding: 10px; text-align: center; }
-nav a { margin: 0 10px; text-decoration: none; }
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 1rem;
+}
+.product {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.whatsapp-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    background-color: #25D366;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
