@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boon's Blend | Premium Robusta Coffee</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script defer src="js/cart.js"></script>
+</head>
+<body class="bg-white text-gray-800 font-sans">
+  <!-- Header -->
+  <header class="bg-yellow-100 p-4 shadow-md">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Boon's Blend</h1>
+      <nav class="space-x-4">
+        <a href="#products" class="text-gray-700 hover:text-yellow-600">Shop</a>
+        <a href="#about" class="text-gray-700 hover:text-yellow-600">About</a>
+        <a href="#contact" class="text-gray-700 hover:text-yellow-600">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-yellow-50 text-center py-16">
+    <h2 class="text-4xl font-extrabold mb-4">Brew Bold. Brew Pure.</h2>
+    <p class="text-lg">Premium Robusta Coffee — Crafted in Kerala, enjoyed everywhere.</p>
+    <a href="#products" class="mt-6 inline-block bg-yellow-600 text-white px-6 py-2 rounded-full hover:bg-yellow-700">Shop Now</a>
+  </section>
+
+  <!-- Products -->
+  <section id="products" class="py-12 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <h3 class="text-3xl font-bold text-center mb-10">Our Blends</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="border rounded-xl p-4 shadow hover:shadow-lg">
+          <h4 class="font-bold text-xl mb-2">Ginger Mellow</h4>
+          <p class="mb-2">Robusta + Ginger + Black Pepper</p>
+          <p class="text-sm text-gray-600">100g – ₹160 | 250g – ₹380</p>
+          <button onclick="addToCart('Ginger Mellow', 160)" class="mt-2 bg-yellow-600 text-white px-4 py-1 rounded hover:bg-yellow-700">Add to Cart</button>
+        </div>
+        <div class="border rounded-xl p-4 shadow hover:shadow-lg">
+          <h4 class="font-bold text-xl mb-2">Golden Blend</h4>
+          <p class="mb-2">100% Pure Robusta</p>
+          <p class="text-sm text-gray-600">100g – ₹120 | 250g – ₹300</p>
+          <button onclick="addToCart('Golden Blend', 120)" class="mt-2 bg-yellow-600 text-white px-4 py-1 rounded hover:bg-yellow-700">Add to Cart</button>
+        </div>
+        <div class="border rounded-xl p-4 shadow hover:shadow-lg">
+          <h4 class="font-bold text-xl mb-2">Spice Infusion</h4>
+          <p class="mb-2">Robusta + Fenugreek + Cumin</p>
+          <p class="text-sm text-gray-600">100g – ₹140 | 250g – ₹340</p>
+          <button onclick="addToCart('Spice Infusion', 140)" class="mt-2 bg-yellow-600 text-white px-4 py-1 rounded hover:bg-yellow-700">Add to Cart</button>
+        </div>
+      </div>
+      <div class="mt-10 text-center">
+        <h4 class="text-xl font-bold">Nature Brew Collection – 300g</h4>
+        <p class="text-gray-600 mb-2">Includes 100g each of all 3 blends</p>
+        <p class="text-sm text-gray-600">₹350</p>
+        <button onclick="addToCart('Nature Brew Collection', 350)" class="mt-2 bg-yellow-600 text-white px-4 py-1 rounded hover:bg-yellow-700">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-10 bg-gray-50">
+    <div class="max-w-3xl mx-auto text-center">
+      <h3 class="text-2xl font-bold mb-4">Your Cart</h3>
+      <ul id="cartList" class="mb-4 text-left"></ul>
+      <button onclick="checkoutWhatsApp()" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">Checkout via WhatsApp</button>
+    </div>
+  </section>
+
+  <section id="about" class="py-16 bg-white text-center">
+    <div class="max-w-2xl mx-auto">
+      <h3 class="text-3xl font-bold mb-4">About Boon's Blend</h3>
+      <p>Boon's Blend is handcrafted in the hills of Kerala using premium Robusta beans. We combine traditional wisdom with bold ingredients like ginger, cumin, and fenugreek for a coffee that fuels your day naturally.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="py-16 bg-yellow-50 text-center">
+    <div class="max-w-2xl mx-auto">
+      <h3 class="text-3xl font-bold mb-4">Contact Us</h3>
+      <p>📍 Door No: 103/19, Kattappana South P.O., Kunthalampara, Idukki, Kerala – 685515</p>
+      <p>📞 +91 91888 40848</p>
+      <p>📬 <a href="https://wa.me/919188840848" class="text-green-700 underline">Order via WhatsApp</a></p>
+    </div>
+  </section>
+</body>
+</html>
