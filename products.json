@@ -1,0 +1,20 @@
+[
+  {
+    "id": "ginger-mellow-100",
+    "name": "Ginger Mellow - 100g",
+    "price": 160,
+    "image": "assets/images/ginger-mellow-100.jpg"
+  },
+  {
+    "id": "golden-blend-250",
+    "name": "Golden Blend - 250g",
+    "price": 300,
+    "image": "assets/images/golden-blend-250.jpg"
+  },
+  {
+    "id": "spice-infusion-100",
+    "name": "Spice Infusion - 100g",
+    "price": 140,
+    "image": "assets/images/spice-infusion-100.jpg"
+  }
+]
