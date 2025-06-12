@@ -3,24 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Boon's Blend</title>
-  <link rel="stylesheet" href="styles/style.css">
+  <title>Boon's Blend - Shop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs"></script>
 </head>
-<body>
-  <header>
-    <h1>Welcome to Boon’s Blend</h1>
-    <nav>
-      <a href="products.html">Products</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="cart.html">Cart</a>
-    </nav>
-  </header>
-  <main>
-    <p>Discover our artisan coffee blends made with natural ingredients.</p>
-  </main>
-  <footer>
-    <p>&copy; 2025 Boon’s Blend</p>
-  </footer>
+<body class="bg-gray-100 p-6">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-6 text-center">Boon's Blend - Order Now</h1>
+    <div id="products" class="grid grid-cols-1 sm:grid-cols-2 gap-6"></div>
+
+    <form id="orderForm" class="bg-white p-4 mt-8 shadow rounded">
+      <h2 class="text-xl font-semibold mb-2">Place an Order</h2>
+      <div class="grid grid-cols-2 gap-4">
+        <input type="text" name="name" placeholder="Name" class="border p-2 rounded" required>
+        <input type="email" name="email" placeholder="Email" class="border p-2 rounded" required>
+        <input type="text" name="phone" placeholder="Phone" class="border p-2 rounded" required>
+        <input type="text" name="address" placeholder="Shipping Address" class="border p-2 rounded" required>
+        <select name="productId" class="border p-2 rounded" required></select>
+        <input type="number" name="quantity" placeholder="Quantity" class="border p-2 rounded" min="1" required>
+      </div>
+      <button class="bg-green-600 text-white px-4 py-2 mt-4 rounded">Place Order</button>
+    </form>
+
+    <div class="mt-8 text-center">
+      <h2 class="text-lg font-medium">Scan to Pay via UPI</h2>
+      <img src="/qr.png" alt="UPI QR Code" class="w-48 mx-auto mt-2">
+      <p class="text-sm text-gray-600">Confirm payment manually after placing order.</p>
+    </div>
+  </div>
+
+  <script>
+    fetch('/api/products')
+      .then(res => res.json())
+      .then(data => {
+        const productsDiv = document.getElementById('products');
+        const productSelect = document.querySelector('select[name=productId]');
+        data.forEach(p => {
+          productsDiv.innerHTML += `
+            <div class="bg-white p-4 rounded shadow">
+              <img src="${p.imageUrl}" alt="${p.name}" class="w-full h-40 object-cover rounded">
+              <h3 class="text-lg font-bold mt-2">${p.name}</h3>
+              <p class="text-sm">${p.description}</p>
+              <p class="font-semibold mt-1">₹${p.price}</p>
+            </div>
+          `;
+          productSelect.innerHTML += `<option value="${p._id}">${p.name}</option>`;
+        });
+      });
+
+    document.getElementById('orderForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const form = e.target;
+      const data = Object.fromEntries(new FormData(form).entries());
+      const res = await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const result = await res.json();
+      if (result.success) window.location.href = '/order-success.html';
+    });
+  </script>
 </body>
 </html>

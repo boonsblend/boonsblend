@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ orders: [] }" x-init="fetch('/api/orders', { headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }}).then(r => r.json()).then(data => orders = data)">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Orders</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs"></script>
+</head>
+<body class="p-6 bg-gray-100">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-2xl font-bold mb-4">All Orders</h1>
+    <table class="min-w-full bg-white rounded shadow">
+      <thead>
+        <tr class="bg-gray-200 text-left">
+          <th class="p-2">Customer</th>
+          <th class="p-2">Email</th>
+          <th class="p-2">Phone</th>
+          <th class="p-2">Address</th>
+          <th class="p-2">Product</th>
+          <th class="p-2">Qty</th>
+          <th class="p-2">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <template x-for="order in orders">
+          <tr class="border-t">
+            <td class="p-2" x-text="order.name"></td>
+            <td class="p-2" x-text="order.email"></td>
+            <td class="p-2" x-text="order.phone"></td>
+            <td class="p-2" x-text="order.address"></td>
+            <td class="p-2" x-text="order.productId?.name"></td>
+            <td class="p-2" x-text="order.quantity"></td>
+            <td class="p-2" x-text="new Date(order.createdAt).toLocaleString()"></td>
+          </tr>
+        </template>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
